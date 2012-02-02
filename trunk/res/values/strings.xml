@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="Dad">Dad!</string>
-    <string name="Mom">Mom!</string>
+    <string name="Dad">!אבא</string>
+    <string name="Mom">!אמא</string>
     <string name="app_name">TalkingImage</string>
 
 </resources>
