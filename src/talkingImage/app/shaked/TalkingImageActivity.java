@@ -16,7 +16,8 @@ public class TalkingImageActivity extends Activity
 	protected Button Dad;
 	protected Button Mom;
 	protected SoundPool Pool;
-	
+
+    TalkSounds talkSounds = new TalkSounds();
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,11 @@ public class TalkingImageActivity extends Activity
         Mom = (Button) findViewById(R.id.Mom);
         ImageView image = (ImageView)findViewById(R.id.Image);
         image.setScaleType(ScaleType.FIT_XY);
+        talkSounds.addSound(1, R.raw.dad, getBaseContext());
+		talkSounds.addSound(2, R.raw.mom, getBaseContext());
+		
         Dad.setOnClickListener(this);
-        Mom.setOnClickListener(this);        
+        Mom.setOnClickListener(this);
         }
 
 	@Override
@@ -35,11 +39,11 @@ public class TalkingImageActivity extends Activity
 		// TODO Auto-generated method stub
 		if (v == Dad)
 		{
-			Pool.play((Integer) soundPoolHashMap.get(index), 1, 1, 1, 0, 1f);
+			talkSounds.play(1, false);
 		}
 		else if (v == Mom)
 		{
-			Pool.play(R.raw.hit2, 1, 1, 1, -1, 1f);
+			talkSounds.play(2, false);
 		}
 	}
 
