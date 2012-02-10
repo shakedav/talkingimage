@@ -1,14 +1,7 @@
 package talkingImage.app.shaked;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Random;
-
-import android.R.raw;
-import android.R.string;
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,8 +14,8 @@ public class TalkingImageActivity extends Activity
 	protected Button Dad;
 	protected Button Mom;
 	protected SoundPool Pool;
-	protected ArrayList<Integer> fileNames;
-	
+	protected int dadIndex = 1;
+	protected int momIndex = 6;
     TalkSounds talkSounds = new TalkSounds();
     /** Called when the activity is first created. */
     @Override
@@ -56,21 +49,24 @@ public class TalkingImageActivity extends Activity
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		Random rand = new Random();			
-		int index;
+		
+		if (momIndex > 10)
+		{
+			momIndex = 6;
+		}
+		if (dadIndex > 5)
+		{
+			dadIndex = 1;
+		}
 		if (v == Dad)
 		{
-			index = rand.nextInt(6);
-			talkSounds.play(index, false);
+			talkSounds.play(dadIndex, false);
+			dadIndex++;
 		}
 		else if (v == Mom)
-		{
-			int maximum = 10;
-			int minimum = 6;
-			Random rn = new Random();
-			int range = maximum - minimum + 1;
-			index =  rn.nextInt(range) + minimum;
-			talkSounds.play(index, false);
+		{		
+			talkSounds.play(momIndex, false);
+			momIndex++;
 		}
 	}
 
